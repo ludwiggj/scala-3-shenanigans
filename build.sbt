@@ -36,3 +36,16 @@ lazy val root = (project in file("."))
   .settings {
     commonSettings: _*
   }
+
+// https://www.baeldung.com/scala/sbt-enforcing-jvm-version#bd-enforcing-jvm-version-with-sbt-initialize
+initialize := {
+  // Ensure previous initializations are run
+  val _ = initialize.value
+
+  // Retrieve the JVM's class version and specification version
+  val classVersion = sys.props("java.class.version")
+  val specVersion = sys.props("java.specification.version")
+
+  // Assert that the JVM meets the minimum required version, for example, Java 17
+  assert(specVersion.toDouble >= 21, "Java 21 or above is required to run this project.")
+}
