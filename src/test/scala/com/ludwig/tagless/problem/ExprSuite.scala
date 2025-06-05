@@ -1,6 +1,6 @@
-package com.ludwig.tagless
+package com.ludwig.tagless.problem
 
-import com.ludwig.tagless.Expr.eval
+import Expr.eval
 
 class ExprSuite extends munit.FunSuite {
   test("B") {
@@ -30,5 +30,19 @@ class ExprSuite extends munit.FunSuite {
   test("expression combination") {
     val expr = Not(Or(And(B(true), B(false)), B(true)))
     assertEquals(eval(expr), false)
+  }
+
+  test("I") {
+    assertEquals(eval(I(6)), 6)
+  }
+
+  test("Add integers") {
+    assertEquals(eval(Sum(I(6), I(8))), 14)
+  }
+
+  test("Add integer and boolean - boom!") {
+    intercept[java.lang.ClassCastException] {
+      eval(Sum(B(true), I(8)))
+    }
   }
 }
