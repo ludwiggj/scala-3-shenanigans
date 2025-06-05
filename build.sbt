@@ -11,17 +11,25 @@ libraryDependencies ++= Seq(
   "net.logstash.logback" % "logstash-logback-encoder" % "7.4",
   "dev.profunktor" %% "redis4cats-effects"  % "1.7.0",
   "dev.profunktor" %% "redis4cats-log4cats" % "1.7.0",
-  "org.scalatest" %% "scalatest" % "3.2.18" % Test,
   "com.dimafeng" %% "testcontainers-scala" % "0.41.4",
-  "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.4"
+  "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.4",
+  "org.scalatest" %% "scalatest" % "3.2.18" % Test,
+  "org.scalameta" %% "munit" % "1.1.1" % Test
 )
 
 lazy val commonSettings = Seq(
-  scalaVersion := "3.4.0",
-  scalacOptions += "-noindent",
-  scalacOptions += "-rewrite",
-  scalacOptions += "-print-lines",
-  javacOptions += " --illegal-access=warn",
+  scalaVersion := "3.3.6",
+  scalacOptions ++= Seq(
+    "-noindent",
+    "-rewrite",
+    "-print-lines",
+    "-java-output-version:21",
+  ),
+  javacOptions ++= Seq(
+    " --illegal-access=warn",
+    "-source", "21",
+    "-target", "21"
+  )
 )
 
 lazy val root = (project in file("."))
