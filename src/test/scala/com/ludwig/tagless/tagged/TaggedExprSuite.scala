@@ -1,8 +1,8 @@
-package com.ludwig.tagless.problem
+package com.ludwig.tagless.tagged
 
 import Expr.eval
 
-class ExprSuite extends munit.FunSuite {
+class TaggedExprSuite extends munit.FunSuite {
   test("B") {
     assertEquals(eval(B(false)), false)
     assertEquals(eval(B(true)), true)
@@ -40,8 +40,10 @@ class ExprSuite extends munit.FunSuite {
     assertEquals(eval(Sum(I(6), I(8))), 14)
   }
 
+  // This failure mode is now cleaner
   test("Add integer and boolean - boom!") {
-    intercept[java.lang.ClassCastException] {
+    val expectedErrorMessge = "assertion failed: attempting to evaluate Sum expression with improperly typed operands (bool, int)"
+    interceptMessage[java.lang.AssertionError](expectedErrorMessge) {
       eval(Sum(B(true), I(8)))
     }
   }

@@ -1,7 +1,5 @@
 package com.ludwig.tagless.problem
 
-import com.ludwig.tagless.*
-
 // https://rockthejvm.com/articles/tagless-final-in-scala
 sealed trait Expr // the tree
 
