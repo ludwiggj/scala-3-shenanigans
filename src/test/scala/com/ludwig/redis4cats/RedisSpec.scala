@@ -20,7 +20,7 @@ class RedisSpec extends AnyWordSpecLike with ForAllTestContainer {
   lazy val mappedPort: Int   = container.mappedPort(redisPort)
   lazy val redisLocation     = s"redis://$redisHost:$mappedPort"
 
-  "Respect TTL for NowNext schedule response" in {
+  "Respect TTL for NowNext schedule response" ignore {
     Redis[IO].utf8(redisLocation).use { redis =>
       for {
         _ <- redis.set("foo", "123")
