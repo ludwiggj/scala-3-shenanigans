@@ -9,9 +9,7 @@ class ExpSymSuite extends munit.FunSuite {
     import sym.*
     add(lit(1), add(lit(-2), lit(4)))
   }
-
-  // We now have an encoding for our DSL and an expression of it, all we need to confirm that it
-  // works is an actual interpreter.
+  
   test("print expression") {
     // Let’s do pretty-printing.
     val print = new ExpSym[String] {
