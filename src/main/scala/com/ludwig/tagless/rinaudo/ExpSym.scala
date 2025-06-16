@@ -1,8 +1,5 @@
 package com.ludwig.tagless.rinaudo
 
-// The intuition, here, is that since we’re working with functions, the only way to tell them how
-// to interpret some data is to pass an interpreter as a parameter.
-
 // Sym stands for symantic i.e. syntax and semantic: the type describes the syntax of our language,
 // values of that type its semantics.
 
