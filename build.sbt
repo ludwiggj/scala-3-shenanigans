@@ -47,5 +47,8 @@ initialize := {
   val specVersion = sys.props("java.specification.version")
 
   // Assert that the JVM meets the minimum required version, for example, Java 17
-  assert(specVersion.toDouble >= 21, "Java 21 or above is required to run this project.")
+  assert(
+    specVersion.toDouble >= 21,
+    s"Java 21 or above is required to run this project. Actual version = $specVersion (class version $classVersion)"
+  )
 }

@@ -87,3 +87,19 @@ an expression of it, all we need to confirm that it works is an actual interpret
 
 See [ExpSymWithSugar](./ExpSymWithSugar.scala) for the resulting code, and
 also [ExpSymWithSugarSuite](/src/test/scala/com/ludwig/tagless/rinaudo/ExpSymWithSugarSuite.scala).
+
+### The Expression Problem
+
+[ExpSymWithSugar](./ExpSymWithSugar.scala) is a less naive final encoding that allows us to support multiple
+interpreters. This was a lot of work to achieve exactly the same thing as the initial encoding, but the pay-off is if it
+solves the Expression Problem. Let’s try to add multiplication to our final-encoded DSL. Earlier it was mentioned that
+this can be seen as composing two distinct DSLs. This is exactly what we’re going to do, by making multiplication its
+own dedicated DSL.
+
+See [ExpMultSym](./ExpMultSym.scala)
+and [CombiningSymsSuite](/src/test/scala/com/ludwig/tagless/rinaudo/CombiningSymsSuite.scala)
+
+So we’ve added syntax to our DSL without breaking any pre-existing code.
+
+We can also add interpreters without breaking anything, since that’s merely a matter of writing new given instances of
+an ExpSym and ExpMultSym for the appropriate type A.
