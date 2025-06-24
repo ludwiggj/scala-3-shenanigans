@@ -1,12 +1,5 @@
 package com.ludwig.tagless.rock_the_jvm.tagless_initial
 
-// https://rockthejvm.com/articles/tagless-final-in-scala
-
-// The tags in the previous solution essentially added type information to the runtime.
-// So let's remove the tags and let the compiler do the type-checking automatically.
-
-// This is a tagless solution, because we’ve removed tags. It’s called tagless initial,
-// because we work with intermediate data structures, not with the values we care about.
 sealed trait Expr[A] // the tree
 
 case class B(boolean: Boolean) extends Expr[Boolean]

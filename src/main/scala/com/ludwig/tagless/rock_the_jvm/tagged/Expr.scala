@@ -10,10 +10,6 @@ case class I(int: Int) extends Expr("int")
 case class Sum(left: Expr, right: Expr) extends Expr("int")
 
 object Expr {
-  // This approach has the benefit of doing “type” checks (by checking the tag) and returning
-  // the correct result for each expression. However, the type check still happens at runtime,
-  // we still don’t have true type checking (by the wider return type) and we’re still doing
-  // type casts. This still isn't type safe - it can crash at runtime
   def eval(expr: Expr): Boolean | Int = expr match {
     case And(left, right) =>
       assert(

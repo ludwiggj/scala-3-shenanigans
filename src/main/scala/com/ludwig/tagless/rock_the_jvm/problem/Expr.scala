@@ -1,6 +1,5 @@
 package com.ludwig.tagless.rock_the_jvm.problem
 
-// https://rockthejvm.com/articles/tagless-final-in-scala
 sealed trait Expr // the tree
 
 case class B(boolean: Boolean) extends Expr

@@ -103,3 +103,27 @@ So we’ve added syntax to our DSL without breaking any pre-existing code.
 
 We can also add interpreters without breaking anything, since that’s merely a matter of writing new given instances of
 an ExpSym and ExpMultSym for the appropriate type A.
+
+### Manipulating values of our DSL
+
+There’s a major flaw in our implementation though: it does not allow us to manipulate expressions of our DSL. All we can
+do is interpret them - we cannot, for example, pass them to other functions, or return them from functions. This is
+because we’ve declared them as methods, which are not first-class citizens.
+
+In theory that shouldn’t be much of an issue, because the compiler can mostly turn methods into functions, and those are
+first-class citizen. In practice, unfortunately, it won’t quite work out because our methods are polymorphic.
+
+Scala 2 does not support polymorphic functions. You could keep working with methods, which drastically reduces the
+usefulness of a final encoding; expressions not being values means you cannot, say, parse them from text files. Or you
+could write a lot of scaffolding to simulate polymorphic functions.
+
+Things are a little better in Scala 3, because it does support polymorphic functions. I encourage you to play with this
+yourself, and maybe, I don’t know, to think about ways of encoding an expression in JSON and back to an in-memory
+representation. It won’t be pleasant, but it will be enlightening.
+
+NOTE: The above section would be much clearer if it also had examples. Regardless, I've had a play with polymorphic
+functions, see [ManipulateSymsSuite](/src/test/scala/com/ludwig/tagless/rinaudo/ManipulateSymsSuite.scala). Note that
+this repo uses Scala 3.
+
+See
+also [Scala 3: Type Lambdas, Polymorphic Function Types, and Dependent Function Types](https://medium.com/scala-3/scala-3-type-lambdas-polymorphic-function-types-and-dependent-function-types-2a6eabef896d).
