@@ -1,8 +1,8 @@
-package com.ludwig.tagless.rinaudo
+package com.ludwig.tagless.rinaudo.first_order.final_encoding
 
-import com.ludwig.tagless.rinaudo.ExpViaFunctions.*
+import com.ludwig.tagless.rinaudo.first_order.final_encoding.Exp01ViaFunctions.*
 
-class ExpViaFunctionsSuite extends munit.FunSuite {
+class Exp01ViaFunctionsSuite extends munit.FunSuite {
   test("evaluate expression") {
     val expr = add(lit(5), add(lit(1), lit(-4)))
     assertEquals(expr, 2)

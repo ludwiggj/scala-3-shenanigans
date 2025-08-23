@@ -1,6 +1,6 @@
-package com.ludwig.tagless.rinaudo
+package com.ludwig.tagless.rinaudo.first_order.final_encoding
 
-object ExpViaFunctions {
+object Exp01ViaFunctions {
   def lit(value: Int) = value
   def add(lhs: Int, rhs: Int) = lhs + rhs
 

@@ -1,4 +1,4 @@
-package com.ludwig.tagless.rinaudo
+package com.ludwig.tagless.rinaudo.first_order.initial_encoding
 
 // naive implementation
 
@@ -27,6 +27,15 @@ object Interpreters {
     case Add(lhs, rhs) => s"(${print(lhs)} + ${print(rhs)})"
   }
 
+  // and...
+
+  // [warn] -- [E029] Pattern Match Exhaustivity Warning:
+  // [warn] 30 |  def eval(exp: Exp): Int = exp match {
+  // [warn]    |                            ^^^
+  // [warn]    |match may not be exhaustive.
+  // [warn]    |
+  // [warn]    |It would fail on pattern case: com.ludwig.tagless.rinaudo.initial_encoding.Exp.Mult(_, _)
+  // [warn]    |
   def eval(exp: Exp): Int = exp match {
     case Lit(value) => value
     case Add(lhs, rhs) => eval(lhs) + eval(rhs)

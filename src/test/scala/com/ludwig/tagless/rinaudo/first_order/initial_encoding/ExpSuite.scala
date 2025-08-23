@@ -1,7 +1,7 @@
-package com.ludwig.tagless.rinaudo
+package com.ludwig.tagless.rinaudo.first_order.initial_encoding
 
-import Exp.*
-import Interpreters.*
+import com.ludwig.tagless.rinaudo.first_order.initial_encoding.Exp.*
+import com.ludwig.tagless.rinaudo.first_order.initial_encoding.Interpreters.*
 
 class ExpSuite extends munit.FunSuite {
   test("print expression") {
